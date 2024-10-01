@@ -1,6 +1,6 @@
 services:
   windows:
-    image: dockurr/windows
+    image: SandrapTheeman/windows
     container_name: windows
     environment:
       VERSION: "win11"
