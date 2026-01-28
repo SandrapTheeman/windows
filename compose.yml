@@ -1,9 +1,17 @@
 services:
   windows:
-    image: sandraptheeman/windows
+    image: dockurr/windows
     container_name: windows
     environment:
       VERSION: "win11"
+      LANGUAGE: "English"
+      REGION: "en-UK"
+      KEYBOARD: "en-UK"
+      DISK_SIZE: "25G"
+      RAM_SIZE: "3G"
+      CPU_CORES: "1"
+      USERNAME: "#"
+      PASSWORD: "#"
     devices:
       - /dev/kvm
     cap_add:
@@ -13,3 +21,12 @@ services:
       - 3389:3389/tcp
       - 3389:3389/udp
     stop_grace_period: 2m
+    networks:
+      - virtual_server
+    volumes:
+      - ./storage:/storage
+      - ./shared:/shared
+
+networks:
+  virtual_server:
+    driver: bridge
